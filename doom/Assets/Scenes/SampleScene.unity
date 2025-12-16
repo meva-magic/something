@@ -822,8 +822,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c78bb4b289e164eb1452c6cf2f7125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0.002
-  smooth: 10
+  amount: 0.03
+  smooth: 50
   frequency: 10
 --- !u!1 &979702188
 GameObject:
