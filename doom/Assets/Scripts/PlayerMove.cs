@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     public static PlayerMove _instance;
 
-    [SerializeField] private float playerSpeed = 20;
+    [SerializeField] private float playerSpeed = 10;
     //[SerializeField] private float damping = 2f;
 
     [SerializeField] private CharacterController controller;
@@ -28,12 +28,12 @@ public class PlayerMove : MonoBehaviour
     }
 
 
-    void Start()
+    private void Start()
     {
         controller = GetComponent<CharacterController>();
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         GetInput();
         MovePlayer();
