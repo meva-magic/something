@@ -15,6 +15,7 @@ public class HeadBob : MonoBehaviour
 
     private float inputMagnitude;
     private Vector3 startPos;
+    private float bobTimer;
 
     private void Start()
     {
@@ -24,32 +25,30 @@ public class HeadBob : MonoBehaviour
     private void Update()
     {
         CheckForMovement();
-        StopHeadBob();
     }
 
     private void CheckForMovement()
     {
         inputMagnitude = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).magnitude;
 
-        if (inputMagnitude != 0)
+        if (inputMagnitude > 0)
         {
-            StartHeadBob();
+            bobTimer += Time.deltaTime * frequency;
+            Vector3 newPosition = startPos + CalculateHeadBob(bobTimer);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, newPosition, smooth * Time.deltaTime);
+        }
+        else
+        {
+            bobTimer = 0;
+            transform.localPosition = Vector3.Lerp(transform.localPosition, startPos, smooth * Time.deltaTime);
         }
     }
 
-    private Vector3 StartHeadBob()
+    private Vector3 CalculateHeadBob(float timer)
     {
         Vector3 pos = Vector3.zero;
-        pos.y += Mathf.Lerp(pos.y, Mathf.Sin(Time.time * frequency) * amount * 1.4f, smooth *Time.deltaTime);
-        pos.x += Mathf.Lerp(pos.x, Mathf.Cos(Time.time * frequency / 2f) * amount * 1.6f, smooth * Time.deltaTime);
-        transform.localPosition += pos;
-
+        pos.y += Mathf.Sin(timer) * amount * 1.4f;
+        pos.x += Mathf.Cos(timer * 0.5f) * amount * 1.6f;
         return pos;
-    }
-
-    private void StopHeadBob()
-    {
-        if (transform.localPosition == startPos) return;
-        transform.localPosition = Vector3.Lerp(transform.localPosition, startPos, 1 * Time.deltaTime);
     }
 }
