@@ -6,6 +6,6 @@ public class SceneMusic : MonoBehaviour
 {
     void Start()
     {
-        //AudioManager.instance.Play("LevelMusic");
+        AudioManager.instance.Play("MainTheme");
     }
 }
