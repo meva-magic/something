@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class NPCScriptableObject : ScriptableObject
 {
-    public string name;
+    public string nametag;
     public Sprite portrait;
     public AudioClip voice;
 

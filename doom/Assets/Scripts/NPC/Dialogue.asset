@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58b894dd02414544843cea2982a72ac, type: 3}
   m_Name: Dialogue
   m_EditorClassIdentifier: 
-  name: 
+  name: Cat
   portrait: {fileID: 0}
   voice: {fileID: 0}
   voicePitch: 1

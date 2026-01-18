@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour//, IInteractable
 {
     [SerializeField] private NPCScriptableObject dialogueData;
     [SerializeField] private GameObject dialoguePanel;
@@ -13,6 +13,11 @@ public class NPC : MonoBehaviour
 
     private int dialogueIndex;
     private bool isTyping, isDialogueActive;
+
+    private void Start()
+    {
+        //NPCID ??= GlobalHelper.GenerateUniqueID(gameObject);
+    }
 
     public bool CanInteract()
     {
@@ -43,7 +48,7 @@ public class NPC : MonoBehaviour
         isDialogueActive = true;
         dialogueIndex = 0;
 
-        nameText.SetText(dialogueData.name);
+        nameText.SetText(dialogueData.nametag);
         portrait.sprite = dialogueData.portrait;
 
         dialoguePanel.SetActive(true);
